@@ -1,0 +1,100 @@
+@startuml
+
+class Team {
+  +event: LunchEvent
+  +members: Array<Person>
+}
+
+class LunchEvent {
+  +leader: Person
+  +share(Person): void
+
+}
+
+class LunchGroup {
+  +members: Array<Person>
+  +team: Team
+  +lunchEvent: LunchEvent
+  ---
+  +lunchEventLeader(): Person
+}
+
+class Admin {
+  person: Person
+}
+
+class Person {
+  +createEvent: Event
+  +team: Team
+}
+
+class Unit  {
+  +members: Array<Person>
+  +title: String
+}
+
+Team "1" *-- "0..*" LunchGroup : groups
+Person "1" *-- "0..*" Team : team
+LunchEvent "1" *-r- "1" Person : leader
+
+package Contracts {
+  object createJSON {
+    leader:Person,
+    participants:Array<Person>,
+    restaurant:Restaurant
+  }
+  object shareJSON {
+    person: Person
+    lunchEvent: LunchEvent
+  }
+
+  object joinJSON {
+    person: Person
+  }
+}
+
+
+package EventsAPI {
+  package AdminAPI {
+    class FridayLunch {
+      +createEvent(createJSON): LunchEvent
+      +open(): void
+    }
+
+    class CreateLunchEvent {
+      +payload *-> JSON
+      -validateGroupLeader(): Boolean
+      -validateGroupParticipantGroupSize(): Boolean
+      -validateGroupParticipantUnitOrigin(): Boolean
+      -validateGroupParticipantEventHistory(): Boolean
+      -validateGroupSize(): Boolean
+      ---
+      +groups(): LunchGroup
+      +create(): LunchEvent
+    }
+
+    class ShareLunchEvent {
+      +payload *-> shareJSON
+      +notifyPeers(): void
+    }
+  }
+
+  package PersonAPI {
+    class JoinLunchEvent {
+      +payload *-> joinJSON
+    }
+
+  }
+
+  LunchEvent .. CreateLunchEvent : createEvent
+
+  Person --> JoinJSON
+  joinJSON --> JoinLunchEvent
+
+  Admin --> createJSON : **first step**
+  createJSON  --> CreateLunchEvent : **create new friday**
+  Admin --> shareJSON : **notify employees**
+  shareJSON-> ShareLunchEvent : **payload**
+}
+
+@enduml

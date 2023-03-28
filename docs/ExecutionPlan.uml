@@ -1,0 +1,40 @@
+
+       ┌─┐
+       ║"│
+       └┬┘
+       ┌┼┐
+        │              ┌────────────┐          ┌──────────────┐
+       ┌┴┐             │PreparePhase│          │ExecutionPhase│
+      User             └─────┬──────┘          └──────┬───────┘
+       │ Analyze requirements│                        │
+       │ ────────────────────>                        │
+       │                     │                        │
+       │     Define scope    │                        │
+       │ ────────────────────>                        │
+       │                     │                        │
+       │     Define goals    │                        │
+       │ ────────────────────>                        │
+       │                     │                        │
+       │     Define tasks    │                        │
+       │ ────────────────────>                        │
+       │                     │                        │
+       │                 Execute tasks                │
+       │ ─────────────────────────────────────────────>
+      User             ┌─────┴──────┐          ┌──────┴───────┐
+       ┌─┐             │PreparePhase│          │ExecutionPhase│
+       ║"│             └────────────┘          └──────────────┘
+       └┬┘
+       ┌┼┐
+        │
+       ┌┴┐
+
+@startuml
+actor User
+
+User -> PreparePhase : Analyze requirements
+User -> PreparePhase : Define scope
+User -> PreparePhase : Define goals
+User -> PreparePhase : Define tasks
+
+User -> ExecutionPhase : Execute tasks
+@enduml
