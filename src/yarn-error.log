@@ -1,0 +1,39 @@
+Arguments: 
+  /Users/ai/.nvm/versions/node/v17.9.1/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js add esbuild
+
+PATH: 
+  /Users/ai/.asdf/installs/ruby/2.7.7/lib/ruby/gems/2.7.0/bin:/Users/ai/.asdf/installs/ruby/2.7.7/bin:/Users/ai/.asdf/shims:/Users/ai/.asdf/bin:/usr/local/opt/libpq/bin:/usr/local/opt/openjdk/bin:/usr/local/bin:/usr/local/sbin:/Users/ai/.bin:/usr/local/opt/imagemagick@6/bin:/Users/ai/.nvm/versions/node/v17.9.1/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/ai/Library/Android/sdk/tools:/Users/ai/Library/Android/sdk/platform-tools:/Users/ai/dev/gitlab/appsolute/kaldi/tools/openfst/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  17.9.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://npm.my-appsolute-mobility.com/esbuild: authorization required to access package esbuild
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "app",
+    "private": "true"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
