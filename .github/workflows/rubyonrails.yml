@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src
+        working-directory: /home/runner/work/dataguard/src
     services:
       postgres:
         image: postgres:12
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src
+        working-directory: /home/runner/work/dataguard/src
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
