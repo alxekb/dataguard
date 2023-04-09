@@ -53,13 +53,14 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: 3.2.0
-      - run: bundle add brakeman bundle-audit
+      - name: Install auit
+        working-directory: src
+        run: bundle add brakeman bundle-audit
       - name: Security audit dependencies
+        working-directory: src
         run: bundle exec bundler-audit --update
       - name: Security audit application code
+        working-directory: src
         run: bundle exec brakeman -q -w2
-      - run: pwd
-      - run: ls -ah
-      - run: ls -ah ./src
       - name: Lint Ruby files
-        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .rb$ | sed -E 's/src\/src/src/g'| xargs bundle exec rubocop --parallel
+        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .rb$  | xargs rubocop 
