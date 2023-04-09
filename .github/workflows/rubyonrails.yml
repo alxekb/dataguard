@@ -32,6 +32,7 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: 3.2.0
+      - run: bundle install
       - name: Set up database schema
         run: bundle exec rails db:schema:load
       - name: Run tests
@@ -47,6 +48,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - run: ls -la
+      - run: bundle install
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
