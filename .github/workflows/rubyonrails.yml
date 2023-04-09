@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
     services:
       postgres:
         image: postgres:12
@@ -50,7 +53,3 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
-        
-defaults:
- run:
-   working-directory: ./src
