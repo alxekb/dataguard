@@ -59,4 +59,4 @@ jobs:
         working-directory: src
         run: bundle exec brakeman -q -w2
       - name: Lint Ruby files
-        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .rb$  | xargs rubocop
+        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base_ref }} ${{ github.event.pull_request.head_ref }} | grep .rb$  | xargs rubocop
