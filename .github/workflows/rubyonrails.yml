@@ -41,6 +41,10 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: sh
+        working-directory: /home/runner/work/dataguard/dataguard/src
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
