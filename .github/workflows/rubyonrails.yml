@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -28,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf
         with:
           bundler-cache: true
           ruby-version: 3.2.0
@@ -45,7 +45,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf
         with:
           bundler-cache: true
           ruby-version: 3.2.0
@@ -59,4 +59,4 @@ jobs:
         working-directory: src
         run: bundle exec brakeman -q -w2
       - name: Lint Ruby files
-        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base_ref }} ${{ github.event.pull_request.head_ref }} | grep .rb$  | xargs rubocop
+        run: git fetch && git diff --name-only --diff-filter=ACMRT ${{ github.sha }} ${{ github.event.pull_request.head_ref }} | grep -i .rb | xargs rubocop
