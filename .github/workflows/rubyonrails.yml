@@ -1,10 +1,5 @@
-# This workflow uses actions that are not certified by GitHub.  They are
-# provided by a third-party and are governed by separate terms of service,
-# privacy policy, and support documentation.
-#
-# This workflow will install a prebuilt Ruby version, install dependencies, and
-# run tests and linters.
 name: "Ruby on Rails CI"
+
 on:
   push:
     branches: [ "main" ]
@@ -29,9 +24,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      # Add or replace dependency steps here
-      - name: go to src
-        run: cd ./src
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
@@ -39,7 +31,6 @@ jobs:
           ruby-version: 3.2.0
       - name: Set up database schema
         run: bundle exec rails db:schema:load
-      # Add or replace test runners here
       - name: Run tests
         run: bundle exec rspec spec
 
@@ -48,17 +39,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: go to src
-        run: cd ./src
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
           ruby-version: 3.2.0
-      # Add or replace any other lints here
       - name: Security audit dependencies
         run: bundle add bundler-audit && bundle exec bundler-audit --update
       - name: Security audit application code
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
+        
+defaults:
+ run:
+  working-directory: ./src
