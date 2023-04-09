@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
+        shell: bash
         working-directory: /home/runner/work/dataguard/src
     services:
       postgres:
@@ -42,6 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
+        shell: bash
         working-directory: /home/runner/work/dataguard/src
     steps:
       - name: Checkout code
