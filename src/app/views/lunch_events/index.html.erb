@@ -1,0 +1,9 @@
+<%= turbo_frame_tag 'lunch_events' do %>
+  <div>
+    <h2>
+      Lunch events
+    </h2>
+    <div>
+
+  <%= render partial: 'lunch_events', locals: { lunch_events: @lunch_events } %>
+<% end %>
