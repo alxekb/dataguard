@@ -16,6 +16,7 @@ module LunchEvents
     def initialize(venue_id: nil, scheduled_at: nil)
       @venue_id = venue_id
       @scheduled_at = scheduled_at
+      @errors = ActiveModel::Errors.new(self)
     end
 
     def save

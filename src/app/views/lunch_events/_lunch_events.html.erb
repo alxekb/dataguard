@@ -1,7 +1,10 @@
+<%= turbo_frame_tag 'lunch_events' do %>
+  <%= link_to 'New lunch event', lunch_events_create_event_index_path, data: { turbo: true } %>
+
   <%- lunch_events.each do |lunch_event| %>
     <div>
       #<%= lunch_event.id%>
     <%= lunch_event.venue.name %> at <%= lunch_event.scheduled_at %>
     </div>
   <% end %>
-
+<% end %>

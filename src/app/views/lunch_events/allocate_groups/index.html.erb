@@ -1,0 +1,5 @@
+<%= turbo_frame_tag 'allocated_lunch_events' do %>
+  <h2>
+    Allocate lunch event group
+  <%= button_to 'Go', lunch_events_allocate_groups_path, method: :post, data: { turbo: true } %>
+<% end %>

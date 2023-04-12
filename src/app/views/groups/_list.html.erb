@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'groups' do %>
+  <%= link_to 'Create groups', lunch_events_create_groups_path, data: { turbo: true } %>
+
+  <% @groups.present? && @groups.each do |group| %>
+    <p>
+      <%= group.lunch_event.venue.name %>
+      <%= link_to group.lunch_event.scheduled_at, group_path(group), data: { turbo: true } %>
+      leader
+      <%= group.leader.id %>
+    </p>
+  <% end %>
+<% end %>

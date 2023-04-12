@@ -1,0 +1,21 @@
+<%= turbo_frame_tag 'allocated_lunch_events' do %>
+  <h2>
+    Allocated groups
+  </h2>
+
+  <% @memberships.each do |membership| %>
+    <div>
+      <h3>
+        Group leader
+        <%= membership.group.leader.id %>
+      </h3>
+      <p>
+      <%= membership.group.lunch_event.venue.name %>
+      </p>
+      <p>
+      Member id
+      <%= membership.member.id %>
+      </p>
+    </div>
+  <% end %>
+<% end %>
