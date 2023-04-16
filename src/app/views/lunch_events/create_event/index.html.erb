@@ -1,0 +1,13 @@
+<%=turbo_frame_tag 'lunch_events' do %>
+  <%= form_for :lunch_event, url: lunch_events_create_event_index_path do |form| %>
+    <div>
+      <%= form.datetime_field :scheduled_at %>
+    </div>
+    <div>
+      <%= form.select :venue_id, options_from_collection_for_select(@venues, :id, :name) %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>

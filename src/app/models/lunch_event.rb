@@ -11,4 +11,8 @@ class LunchEvent < ApplicationRecord
 
   validates :scheduled_at, presence: true
   validates :venue, uniqueness: { scope: :scheduled_at }
+
+  scope :upcoming, -> { where('scheduled_at > ?', Time.zone.now) }
+  scope :scheduled_asc, -> { order(scheduled_at: :asc) }
+  scope :latest, -> { upcoming.scheduled_asc.take(12) }
 end

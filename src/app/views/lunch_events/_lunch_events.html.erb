@@ -1,0 +1,7 @@
+  <%- lunch_events.each do |lunch_event| %>
+    <div>
+      #<%= lunch_event.id%>
+    <%= lunch_event.venue.name %> at <%= lunch_event.scheduled_at %>
+    </div>
+  <% end %>
+
