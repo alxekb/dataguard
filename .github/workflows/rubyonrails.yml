@@ -36,6 +36,8 @@ jobs:
       - run: bundle exec rails db:create
       - name: Set up database schema
         run: bundle exec rails db:migrate
+      - name: Compile assets
+        run: bundle exec rails assets:percompile
       - name: Run tests
         run: bundle exec rspec spec
 
