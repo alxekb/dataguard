@@ -16,16 +16,14 @@ module LunchEvents
       redirect_to lunch_events_allocated_groups_path
     end
 
-    private
-    def group_valid?
-      raise NoGroupsAllocatedError if groups_count.zero?
-
-      # redirect_to lunch_events_allocated_groups_path if groups_count.zero?
-    end
-
-
     def errors
       @errors ||= []
+    end
+
+    private
+
+    def group_valid?
+      raise NoGroupsAllocatedError if groups_count.zero?
     end
 
     def allocate_groups
