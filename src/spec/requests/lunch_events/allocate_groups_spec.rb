@@ -11,7 +11,7 @@ RSpec.describe 'LunchEvents::AllocateGroups', type: :request do
 
     it 'returns http success' do
       post '/lunch_events/allocate_groups'
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
 
     context 'when lunch_event group' do

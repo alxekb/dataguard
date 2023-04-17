@@ -20,7 +20,7 @@ RSpec.describe LunchEvents::CreateGroupsController, type: :request do # rubocop:
       post(lunch_events_create_groups_path(lunch_event), params:)
 
       aggregate_failures do
-        expect(response).to redirect_to(lunch_event_path(lunch_event))
+        expect(response).to redirect_to(groups_path)
         expect(lunch_event.groups.count).to eq(1)
       end
     end
