@@ -15,6 +15,8 @@ module LunchEvents
       if @form.save
         redirect_to lunch_events_path
       else
+        flash.now[:error] = @form.errors.full_messages.join(', ')
+
         render :index
       end
     end

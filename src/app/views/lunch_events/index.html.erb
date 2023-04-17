@@ -1,9 +1,20 @@
-<%= turbo_frame_tag 'lunch_events' do %>
-  <div>
-    <h2>
-      Lunch events
-    </h2>
-    <div>
+<h2>
+  Lunch events
+</h2>
 
+<%= turbo_frame_tag 'lunch_events' do %>
   <%= render partial: 'lunch_events', locals: { lunch_events: @lunch_events } %>
+<% end %>
+
+<h2>
+  Groups
+</h2>
+
+<%= turbo_frame_tag 'groups' do %>
+  <%= render partial: 'groups/list', locals: { groups: @groups } %>
+<% end %>
+
+
+<%= turbo_frame_tag 'allocated_lunch_events' do %>
+  <%= link_to 'Allocate groups', lunch_events_allocate_groups_path %>
 <% end %>

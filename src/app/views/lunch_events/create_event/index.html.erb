@@ -1,4 +1,6 @@
 <%=turbo_frame_tag 'lunch_events' do %>
+  <%= render 'shared/flash' %>
+
   <%= form_for :lunch_event, url: lunch_events_create_event_index_path do |form| %>
     <div>
       <%= form.datetime_field :scheduled_at %>
@@ -9,5 +11,7 @@
     <div>
       <%= form.submit %>
     </div>
+
+    <%= link_to 'Back', lunch_events_path %>
   <% end %>
 <% end %>

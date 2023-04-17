@@ -1,0 +1,8 @@
+<%= turbo_frame_tag 'flash' do %>
+  <% flash.each do |flash_type, message| %>
+    <div class="flash__message">
+      <%= flash_type %>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>

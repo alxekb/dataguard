@@ -1,0 +1,31 @@
+<%= turbo_frame_tag 'groups' do %>
+  <%= render 'shared/flash' %>
+
+  <%= form_for @group, url: lunch_events_create_groups_path do |f| %>
+    <div>
+      <%= f.label :lunch_event %><br />
+      <%= f.select :lunch_event_id,
+                  @lunch_events.pluck('venues.name', :scheduled_at, :id)
+                  .map { |e| [[e[0], e[1]].join("@"), e[2]] } %>
+    </div>
+
+    <div>
+      <%= f.label :leader %><br />
+      <%= f.select :leader_id, @people %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', lunch_events_path %>
+<% end %>
+
+<%= turbo_stream.replace 'groups' do %>
+  <%= render partial: 'groups/list', locals: { groups: @groups } %>
+<% end %>
+
+<%= turbo_stream.replace 'allocated_lunch_events' do %>
+  <%= link_to 'Allocate groups', lunch_events_allocate_groups_path %>
+<% end %>

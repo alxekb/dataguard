@@ -8,11 +8,12 @@ class LunchEvent < ApplicationRecord
 
   has_many :lunch_event_persons
   has_many :people, through: :lunch_event_persons
+  has_many :groups, class_name: LunchEvents::Group.name
 
   validates :scheduled_at, presence: true
   validates :venue, uniqueness: { scope: :scheduled_at }
 
   scope :upcoming, -> { where('scheduled_at > ?', Time.zone.now) }
   scope :scheduled_asc, -> { order(scheduled_at: :asc) }
-  scope :latest, -> { upcoming.scheduled_asc.take(12) }
+  scope :latest, -> { upcoming.scheduled_asc }
 end

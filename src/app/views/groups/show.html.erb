@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "groups" do %>
+  <h2>
+    Join lunch event group
+  </h2>
+
+  <%= form_with url: group_url do |form| %>
+    <p>
+      In order to join the lunch event group, please select your user id
+    </p>
+    <%= form.label :user_id %>
+    <%= form.select :user_id, @user_ids %>
+    <%= form.submit %>
+  <% end %>
+
+  <%= link_to 'Join', group_path(@group), method: :post %>
+  <%= link_to 'Cancel', lunch_events_path %>
+<% end %>

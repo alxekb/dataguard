@@ -1,0 +1,4 @@
+<h2>Groups</h2>
+<%= turbo_frame_tag 'groups' do %>
+  <%= render partial: 'list', locals: { groups: @groups } %>
+<% end %>
