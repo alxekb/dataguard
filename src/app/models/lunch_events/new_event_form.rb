@@ -28,7 +28,7 @@ module LunchEvents
 
     def no_overlapping_events
       return if LunchEvent.where(venue_id:)
-                          .where('scheduled_at > ?', scheduled_at)
+                          .where('scheduled_at = ?', scheduled_at)
                           .empty?
 
       errors.add(:scheduled_at, 'is already taken')
